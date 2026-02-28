@@ -1,6 +1,6 @@
 # Enterprise MARL System with GRC Telemetry
 
-This repository contains a professional-grade Multi-Agent Reinforcement Learning (MARL) system designed to transform a standard demo into a secure, tamper-evident, and reproducible platform. It embeds Governance, Risk, and Compliance (GRC) directly into the environment and training loops.
+This repository contains a Multi-Agent Reinforcement Learning (MARL) system designed to transform a standard demo into a secure, tamper-evident, and reproducible platform. It embeds Governance, Risk, and Compliance (GRC) directly into the environment and training loops.
 
 ## 📖 Overview
 
