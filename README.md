@@ -9,7 +9,7 @@ This repository contains the foundation architecture for a decentralized agent e
 
 ## 📖 Overview
 
-[cite_start]The core concept separates the broadcast global state ($S$), local agent observations ($o_t$), joint actions ($a$), and Decision Interpreter (DI) credit assignment ($r$), while persisting all telemetry for strict GRC auditing[cite: 2]. The system decouples the complex Reinforcement Learning math from the data storage, ensuring a clean, compliant telemetry lake ready for graphing and analysis.
+The core concept separates the broadcast global state ($S$), local agent observations ($o_t$), joint actions ($a$), and Decision Interpreter (DI) credit assignment ($r$), while persisting all telemetry for strict GRC auditing. The system decouples the complex Reinforcement Learning math from the data storage, ensuring a clean, compliant telemetry lake ready for graphing and analysis.
 
 ### Key Capabilities
 * **Decoupled Intelligence:** MARL mathematics (PyTorch) and GRC telemetry (SQLite) operate entirely independently.
@@ -44,16 +44,16 @@ The current codebase is packaged as a Jupyter Notebook (`28022026_MARL_System_wi
 
 ## 🗺️ Roadmap to Production: Concrete GRC Improvements
 
-[cite_start]While the concept is sound for a demo [cite: 2][cite_start], the current implementation is being aggressively upgraded to achieve a true "GRC-grade" operational standard[cite: 91]. The following Epics are currently in the backlog:
+While the concept is sound for a demo, the current implementation is being aggressively upgraded to achieve a true "GRC-grade" operational standard. The following Epics are currently in the backlog:
 
-* [cite_start]**Strong Pseudonymization:** Replacing low-entropy plain SHA-256 hashes (which are vulnerable to dictionary attacks [cite: 6, 9][cite_start]) with KMS-backed HMAC[cite: 101]. [cite_start]We will never store raw identifiers[cite: 101].
-* [cite_start]**Retention Enforcement & Deletion Evidence:** Transitioning from passive retention dates to automated purge processes [cite: 103] [cite_start]with cascading/transactional deletes [cite: 103] [cite_start]and a dedicated `deletion_events` tombstone table[cite: 103].
-* [cite_start]**Tamper-Evidence & Data Integrity:** Enforcing `PRAGMA foreign_keys=ON` [cite: 73] [cite_start]and implementing an append-only event log pattern [cite: 105] [cite_start]where each row includes a `prev_event_hash` and `event_hash` [cite: 106] to detect unauthorized database manipulation.
-* [cite_start]**ML Safety & Reproducibility:** Refactoring notebook execution order into a deterministic script[cite: 59]. [cite_start]Implementing reward clipping/normalization [cite: 81] [cite_start]and strictly logging `policy_updated` truthfully (only when an optimizer step occurred)[cite: 82].
-* [cite_start]**Safe Action Semantics:** Modifying the action space so the `OPEN` agent utilizes safer actions like `OPEN_SAFE_PREVIEW`, `OPEN_SANDBOX`, or `QUARANTINE` [cite: 89] [cite_start]to prevent adversaries from bypassing static logic and triggering active payloads[cite: 48, 87].
-* [cite_start]**Governance Metadata:** Adding strict data classification [cite: 99] [cite_start]and versioning telemetry (`policy_version`, `feature_schema_version`, `rule_version`)[cite: 95].
+* **Strong Pseudonymization:** Replacing low-entropy plain SHA-256 hashes (which are vulnerable to dictionary attacks) with KMS-backed HMAC. We will never store raw identifiers.
+* **Retention Enforcement & Deletion Evidence:** Transitioning from passive retention dates to automated purge processes with cascading/transactional deletes and a dedicated `deletion_events` tombstone table =.
+* **Tamper-Evidence & Data Integrity:** Enforcing `PRAGMA foreign_keys=ON` [cite: 73] [cite_start]and implementing an append-only event log pattern where each row includes a `prev_event_hash` and `event_hash` to detect unauthorized database manipulation.
+* **ML Safety & Reproducibility:** Refactoring notebook execution order into a deterministic script. Implementing reward clipping/normalization and strictly logging `policy_updated` truthfully (only when an optimizer step occurred).
+* **Safe Action Semantics:** Modifying the action space so the `OPEN` agent utilizes safer actions like `OPEN_SAFE_PREVIEW`, `OPEN_SANDBOX`, or `QUARANTINE` to prevent adversaries from bypassing static logic and triggering active payloads.
+* **Governance Metadata:** Adding strict data classification and versioning telemetry (`policy_version`, `feature_schema_version`, `rule_version`).
 
 ## 🔒 Security & Access
-[cite_start]If the SQLite file is exported from the sandbox and contains real telemetry, it must be encrypted at rest (e.g., SQLCipher), file permissions must be locked down, and duties must be separated between read-only analysts and write-service accounts[cite: 109, 111, 112, 113].
+If the SQLite file is exported from the sandbox and contains real telemetry, it must be encrypted at rest (e.g., SQLCipher), file permissions must be locked down, and duties must be separated between read-only analysts and write-service accounts.
 
 ---
